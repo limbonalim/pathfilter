@@ -103,5 +103,5 @@ def open_settings_window(main_window):
 
     combo = ttk.Combobox(settings_window, values=languages)
     combo.bind("<<ComboboxSelected>>", on_select)
-    combo.current(0)
+    combo.current(languages.index(data["language"]))
     combo.pack(pady=20)
