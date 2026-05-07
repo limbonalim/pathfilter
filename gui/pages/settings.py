@@ -1,6 +1,7 @@
 from tkinter import filedialog
 import tkinter as tk
 from tkinter import ttk
+from turtle import up
 
 
 from utils.config import config
@@ -12,6 +13,11 @@ default_config = config.get_default_config()
 
 
 def open_settings_window(main_window):
+
+    def upgate_ui(event=None):
+        global lang
+        lang = config.get_language()
+
     # Изменение заначения edit
     def change_entry_value(value):
         path_entry.config(state="normal")
@@ -23,6 +29,7 @@ def open_settings_window(main_window):
     settings_window = tk.Toplevel(main_window)
     settings_window.title("Настройки")
     settings_window.geometry("300x400")
+    settings_window.bind("<<LanguageChanged>>", upgate_ui)
 
     # Добавляем элементы окно настроек
     label = tk.Label(settings_window, text="Нажмите, чтобы выбрать путь:")
@@ -53,7 +60,12 @@ def open_settings_window(main_window):
         global data
         config.set_config(data)
         change_entry_value(data["path"])
+        swich_language()
         settings_window.destroy()
+
+    def swich_language():
+        upgate_ui()
+        main_window.event_generate("<<LanguageChanged>>")   
 
     # Отмена
     def cancel():
@@ -77,26 +89,12 @@ def open_settings_window(main_window):
     btn_cancel = tk.Button(settings_window, text=lang["btn_cancel"], command=cancel)
     btn_cancel.pack(pady=10)
 
-    # lang_map = {item["name"]: item["code"] for item in data["language-list"]}
-    # def on_select(event):
-    #     selected_name = combo.get()  # Получаем текст (напр. "Russian")
-    #     selected_code = lang_map.get(selected_name)  # Достаем код (напр. "RU")
-
-    #     print(f"Отображается: {selected_name}")
-    #     print(f"Используется код: {selected_code}")
-    #     label.config(text=f"Код для сервера: {selected_code}")
-
-    # combo = ttk.Combobox(settings_window, values=lang_map)
-    # # combo.current(0)
-    # combo.bind("<<ComboboxSelected>>", on_select)
-    # combo.pack(pady=20)
-
     languages = ["ENG", "RU"]
 
     def on_select(event):
         # Получаем выбранное значение
         selected = combo.get()
-        print(f"Выбран язык: {selected}")
+        # print(f"Выбран язык: {selected}")
 
         data["language"] = selected
         btn_save.config(state="normal")
