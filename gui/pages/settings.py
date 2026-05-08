@@ -10,6 +10,7 @@ from utils.config import config
 lang = config.get_language()
 data = config.get_config()
 default_config = config.get_default_config()
+language_list = data["language-list"]
 
 
 def open_settings_window(main_window):
@@ -65,7 +66,7 @@ def open_settings_window(main_window):
 
     def swich_language():
         upgate_ui()
-        main_window.event_generate("<<LanguageChanged>>")   
+        main_window.event_generate("<<LanguageChanged>>")
 
     # Отмена
     def cancel():
@@ -89,17 +90,33 @@ def open_settings_window(main_window):
     btn_cancel = tk.Button(settings_window, text=lang["btn_cancel"], command=cancel)
     btn_cancel.pack(pady=10)
 
-    languages = ["ENG", "RU"]
+    def fill_language_combobox():
+        land = []
+        for item in language_list:
+            land.append(item["name"])
+        return land
+
+    languages = fill_language_combobox()
+
+    def get_language_code_by_name(name):
+        for item in language_list:
+            if name == item["name"]:
+                return item["code"]
+
+    def get_language_name_by_code(code):
+        for item in language_list:
+            if code == item["code"]:
+                return item["name"]
 
     def on_select(event):
         # Получаем выбранное значение
         selected = combo.get()
         # print(f"Выбран язык: {selected}")
 
-        data["language"] = selected
+        data["language"] = get_language_code_by_name(selected)
         btn_save.config(state="normal")
 
     combo = ttk.Combobox(settings_window, values=languages)
     combo.bind("<<ComboboxSelected>>", on_select)
-    combo.current(languages.index(data["language"]))
+    combo.current(languages.index(get_language_name_by_code(data["language"])))
     combo.pack(pady=20)
