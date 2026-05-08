@@ -28,12 +28,12 @@ def open_settings_window(main_window):
 
     # Создаем окно настроек
     settings_window = tk.Toplevel(main_window)
-    settings_window.title("Настройки")
+    settings_window.title(lang["settings_window"])
     settings_window.geometry("300x400")
     settings_window.bind("<<LanguageChanged>>", upgate_ui)
 
     # Добавляем элементы окно настроек
-    label = tk.Label(settings_window, text="Нажмите, чтобы выбрать путь:")
+    label = tk.Label(settings_window, text=lang["Label"])
     label.pack(pady=10)
 
     path_entry = tk.Entry(settings_window, width=40)
@@ -44,7 +44,7 @@ def open_settings_window(main_window):
     def choose_folder():
         global data
         btn_save.config(state="normal")
-        folder = filedialog.askdirectory(title="Выберите рабочую директорию")
+        folder = filedialog.askdirectory(title=lang["askdirectory"])
         if folder:
             data["path"] = folder
             change_entry_value(data["path"])

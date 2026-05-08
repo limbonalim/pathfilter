@@ -1,96 +1,159 @@
 {
-    "path": "C:/Users/akkao/Documents/test",
-    "language": "ENG",
-    "language-list": [
+  "path": "C:/Users/akkao/Documents/test",
+  "language": "ENG",
+  "language-list": [
+    {
+      "name": "Русский",
+      "code": "RU"
+    },
+    {
+      "name": "English",
+      "code": "ENG"
+    }
+  ],
+  "config": [
+    {
+      "name": "Images",
+      "types": [
         {
-            "name": "Русский",
-            "code": "RU"
+          "name": "jpg",
+          "isActive": true
         },
         {
-            "name": "English",
-            "code": "ENG"
+          "name": "jpeg",
+          "isActive": true
+        },
+        {
+          "name": "png",
+          "isActive": true
+        },
+        {
+          "name": "gif",
+          "isActive": true
+        },
+        {
+          "name": "svg",
+          "isActive": true
         }
-    ],
-    "config": [
+      ]
+    },
+    {
+      "name": "Documents",
+      "types": [
         {
-            "name": "Images",
-            "types": [
-                {
-                    "name": "jpg",
-                    "isActive": true
-                },
-                {
-                    "name": "jpeg",
-                    "isActive": true
-                },
-                {
-                    "name": "png",
-                    "isActive": true
-                },
-                {
-                    "name": "gif",
-                    "isActive": true
-                },
-                {
-                    "name": "svg",
-                    "isActive": true
-                }
-            ]
+          "name": "pdf",
+          "isActive": true
         },
         {
-            "name": "Documents",
-            "types": [
-                {
-                    "name": "pdf",
-                    "isActive": true
-                },
-                {
-                    "name": "docx",
-                    "isActive": true
-                },
-                {
-                    "name": "txt",
-                    "isActive": true
-                },
-                {
-                    "name": "xlsx",
-                    "isActive": true
-                }
-            ]
+          "name": "docx",
+          "isActive": true
         },
         {
-            "name": "Archives",
-            "types": [
-                {
-                    "name": "zip",
-                    "isActive": true
-                },
-                {
-                    "name": "tar",
-                    "isActive": true
-                },
-                {
-                    "name": "rar",
-                    "isActive": true
-                }
-            ]
+          "name": "txt",
+          "isActive": true
         },
         {
-            "name": "Setup",
-            "types": [
-                {
-                    "name": "exe",
-                    "isActive": true
-                },
-                {
-                    "name": "msi",
-                    "isActive": true
-                },
-                {
-                    "name": "dmg",
-                    "isActive": true
-                }
-            ]
+          "name": "xlsx",
+          "isActive": true
         }
-    ]
+      ]
+    },
+    {
+      "name": "Archives",
+      "types": [
+        {
+          "name": "zip",
+          "isActive": true
+        },
+        {
+          "name": "tar",
+          "isActive": true
+        },
+        {
+          "name": "rar",
+          "isActive": true
+        }
+      ]
+    },
+    {
+      "name": "Setup",
+      "types": [
+        {
+          "name": "exe",
+          "isActive": true
+        },
+        {
+          "name": "msi",
+          "isActive": true
+        },
+        {
+          "name": "dmg",
+          "isActive": true
+        }
+      ]
+    }
+  ],
+
+  "extensions": [
+    {
+      "name": "jpg",
+      "isActive": true
+    },
+    {
+      "name": "jpeg",
+      "isActive": true
+    },
+    {
+      "name": "png",
+      "isActive": true
+    },
+    {
+      "name": "gif",
+      "isActive": true
+    },
+    {
+      "name": "svg",
+      "isActive": true
+    },
+    {
+      "name": "pdf",
+      "isActive": true
+    },
+    {
+      "name": "docx",
+      "isActive": true
+    },
+    {
+      "name": "txt",
+      "isActive": true
+    },
+    {
+      "name": "xlsx",
+      "isActive": true
+    },
+    {
+      "name": "zip",
+      "isActive": true
+    },
+    {
+      "name": "tar",
+      "isActive": true
+    },
+    {
+      "name": "rar",
+      "isActive": true
+    },
+    {
+      "name": "exe",
+      "isActive": true
+    },
+    {
+      "name": "msi",
+      "isActive": true
+    },
+    {
+      "name": "dmg",
+      "isActive": true
+    }
+  ]
 }

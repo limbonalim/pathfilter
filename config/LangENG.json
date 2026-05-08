@@ -5,5 +5,9 @@
   "btn_set_default": "Set Default",
   "btn_save": "Save",
   "btn_cancel": "Cancel",
-  "btn_stop": "Stop"
+  "btn_stop": "Stop",
+
+  "settings_window": "Settings",
+  "Label": "Click to select a path:",
+  "askdirectory": "Select a working directory"
 }
