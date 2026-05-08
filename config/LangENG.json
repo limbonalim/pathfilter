@@ -4,5 +4,6 @@
   "btn_find_folder": "Find Folder",
   "btn_set_default": "Set Default",
   "btn_save": "Save",
-  "btn_cancel": "Cancel"
+  "btn_cancel": "Cancel",
+  "btn_stop": "Stop"
 }

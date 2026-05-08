@@ -4,5 +4,6 @@
   "btn_find_folder": "Найти папку",
   "btn_set_default": "По умолчанию",
   "btn_save": "Сохранить",
-  "btn_cancel": "Отмена"
+  "btn_cancel": "Отмена",
+  "btn_stop": "Остановить"
 }

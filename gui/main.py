@@ -1,22 +1,31 @@
 import tkinter as tk
 from utils.config import config
 
-from init import init
+from init import init, check_path
 from gui.pages.settings import open_settings_window
+
+from utils.watchdog import run_watchdog, stop_watchdog
+
 
 def open_settings():
     open_settings_window(main_window)
 
 def run():
-    result = init()
+    result = check_path()
     if result == 'NEED_CONFIG':
         open_settings()
+    elif result == 'SUCCESS':
+        run_watchdog()
 
 def upgate_ui(event=None):
     global lang
     lang = config.get_language()
     btn_settings.config(text=lang["btn_settings"])
     btn_run.config(text=lang["btn_run"])
+
+def stop():
+    stop_watchdog()
+
 
 lang = config.get_language()
 
@@ -31,6 +40,9 @@ btn_settings.pack(pady=10)
 
 btn_run = tk.Button(main_window, text=lang["btn_run"], command=run)
 btn_run.pack(pady=10)
+
+btn_stop = tk.Button(main_window, text=lang["btn_stop"], command=stop)
+btn_stop.pack(pady=10)
 
 # 3. Запускаем цикл обработки событий
 main_window.mainloop()
