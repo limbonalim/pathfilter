@@ -1,6 +1,16 @@
 {
   "path": "Выберите папку для работы",
   "language": "ENG",
+  "language-list": [
+    {
+      "name": "Русский",
+      "code": "RU"
+    },
+    {
+      "name": "English",
+      "code": "ENG"
+    }
+  ],
   "config": [
     {
       "name": "Images",
