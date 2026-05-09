@@ -24,22 +24,43 @@ def open_extensions_window(main_window):
 
     def save_all():
         #Сохранение настроек
-        global data, global_state 
+        global data, global_state
+        global_state = [item for item in global_state if item["isActive"]]
         data["config"] = global_state
         config.set_config(data)
 
-    def add_directory(name="", types=[], index=-1):
+    def add_directory(name="", types=[], index=-1, is_active=True):
+
         ui_group_dir = tk.LabelFrame(
             scroll_container, text="Настройки папки", padx=5, pady=5
         )
         ui_group_dir.pack(pady=5, fill="x")
 
         #Инициализация локального состояния для интерфейса 
-        local_state = {"name": name, "types": types}
+        local_state = {"name": name, "types": types, "isActive": is_active}
+
+        if index < 0:
+            global global_state
+            global_state.append(local_state)
+            
+            index = global_state.index(local_state)
+            print(f'Добавил новый элемент {index}')
 
         extension_vars = {}
 
-        edit = tk.Entry(ui_group_dir, width=30)
+        #Сохранение элемента
+        def on_save(var_name='', i=-1, m=''):
+            global global_state
+            local_state["name"] = edit.get()
+
+            if local_state["name"] != "":
+                if index >= 0:
+                    global_state[index] = local_state
+
+        edit_var = tk.StringVar()
+        edit_var.trace_add("write", on_save)
+
+        edit = tk.Entry(ui_group_dir, width=30, textvariable=edit_var)
 
         edit.delete(0, tk.END)
         edit.insert(0, name)
@@ -51,25 +72,15 @@ def open_extensions_window(main_window):
             for i in range(len(local_state["types"])):
                 if local_state["types"][i]["name"] == name:
                     local_state["types"][i]["isActive"] = False if val == 0 else True
+
+            on_save()
         #Удаление элемента
         def on_delete():
             global global_state
-            global_state.remove(local_state)
+            if index >= 0:
+                global_state[index]["isActive"] = False
             ui_group_dir.destroy()
-        #Сохранение элемента
-        def on_save():
-            global global_state
-            local_state["name"] = edit.get()
 
-            if local_state["name"] != "":
-                if index > 0:
-                    global_state[index] = local_state
-                else:
-                    global_state.append(local_state)
-            else:
-                ui_group_dir.destroy()
-                if index > 0:
-                    global_state.pop(index)
         #Создание всех чекбоксов
         for item in extensions:
             default_var = 0
@@ -95,16 +106,14 @@ def open_extensions_window(main_window):
         btn_del = tk.Button(ui_group_dir, text="X", fg="red", command=on_delete)
         btn_del.pack(side="right", padx=5)
 
-        btn_save = tk.Button(ui_group_dir, text="Save", command=on_save)
-        btn_save.pack(side="right", padx=10)
-
     def init():
         # Нужен для перенесения настроек в интерфейс
         global global_state
         global_state = data["config"]
 
         for i in range(len(global_state)):
-            add_directory(global_state[i]["name"], global_state[i]["types"], i)
+            if global_state[i]["isActive"]:
+                add_directory(global_state[i]["name"], global_state[i]["types"], i, global_state[i]["isActive"])
 
     init()
 

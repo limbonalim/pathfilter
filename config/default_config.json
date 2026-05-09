@@ -14,6 +14,7 @@
   "config": [
     {
       "name": "Images",
+      "isActive": true,
       "types": [
         {
           "name": "jpg",
@@ -39,6 +40,7 @@
     },
     {
       "name": "Documents",
+      "isActive": true,
       "types": [
         {
           "name": "pdf",
@@ -60,6 +62,7 @@
     },
     {
       "name": "Archives",
+      "isActive": true,
       "types": [
         {
           "name": "zip",
@@ -77,6 +80,7 @@
     },
     {
       "name": "Setup",
+      "isActive": true,
       "types": [
         {
           "name": "exe",
@@ -91,6 +95,67 @@
           "isActive": true
         }
       ]
+    }
+  ],
+  "extensions": [{
+      "name": "jpg",
+      "isActive": true
+    },
+    {
+      "name": "jpeg",
+      "isActive": true
+    },
+    {
+      "name": "png",
+      "isActive": true
+    },
+    {
+      "name": "gif",
+      "isActive": true
+    },
+    {
+      "name": "svg",
+      "isActive": true
+    },
+    {
+      "name": "pdf",
+      "isActive": true
+    },
+    {
+      "name": "docx",
+      "isActive": true
+    },
+    {
+      "name": "txt",
+      "isActive": true
+    },
+    {
+      "name": "xlsx",
+      "isActive": true
+    },
+    {
+      "name": "zip",
+      "isActive": true
+    },
+    {
+      "name": "tar",
+      "isActive": true
+    },
+    {
+      "name": "rar",
+      "isActive": true
+    },
+    {
+      "name": "exe",
+      "isActive": true
+    },
+    {
+      "name": "msi",
+      "isActive": true
+    },
+    {
+      "name": "dmg",
+      "isActive": true
     }
   ]
 }
